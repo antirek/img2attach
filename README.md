@@ -17,6 +17,8 @@ Simple
 
 var img2attach = require('img2attach');
 
+var html = '<img src="http://cs624028.vk.me/v624028538/276f5/2ASEewrS9xk.jpg">';
+
 img2attach(html).then(function (data) {
   console.log('html', data.html);
   console.log('attachments', data.attachments);

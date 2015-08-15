@@ -33,7 +33,7 @@ With [nodemailer](https://github.com/andris9/Nodemailer)
 
 `````javascript 
 
-var img2attach = require('./index');
+var img2attach = require('img2attach');
 var nodemailer = require('nodemailer');
 
 var html = '<img src="http://cs624028.vk.me/v624028538/276f5/2ASEewrS9xk.jpg">';

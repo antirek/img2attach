@@ -67,5 +67,37 @@ img2attach(html)
 
 `````
 
+
+## API 
+
+** img2attach(html) **
+
+html - html string like *<p><img src="1.jpg"></p>*
+
+return promise (used [Q](https://github.com/kriskowal/q))
+
+
+** img2attach(html).then(function(data) {}) **
+
+data - javascript object
+
+`````javascript
+
+var expected = {
+  html: '<img src="cid:1">',      //cid - url to content-id attachment
+  attachments: [
+    { 
+      cid: 1,
+      src: '1.png',
+      encoding: 'base64',
+      content: 'encoded_data',   //base64 encoded data
+      contentType: 'image/jpg' 
+    } 
+  ]
+};
+
+`````
+
+
 ### RFC
 https://www.ietf.org/rfc/rfc2392.txt

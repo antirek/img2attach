@@ -88,7 +88,7 @@ data - javascript object
 
 `````javascript
 
-var expected = {
+{
   html: '<img src="cid:1">',      //cid - url to content-id attachment
   attachments: [
     { 

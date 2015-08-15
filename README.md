@@ -70,14 +70,19 @@ img2attach(html)
 
 ## API 
 
-** img2attach(html) **
+**img2attach(html)**
 
-html - html string like *<p><img src="1.jpg"></p>*
+html - html string like 
+`````html
+
+<p><img src="1.jpg"></p>
+
+`````
 
 return promise (used [Q](https://github.com/kriskowal/q))
 
 
-** img2attach(html).then(function(data) {}) **
+**img2attach(html).then(function(data) {})**
 
 data - javascript object
 

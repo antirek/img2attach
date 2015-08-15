@@ -1,8 +1,7 @@
 var img2attach = require('./index');
 
-var html = "<img src='http://www.peoriagermans.net/07Oktoberfest2/img64.jpg'>" + 
+var html = "<img src='./1.png'>" + 
 "<img src='http://www.google.com/'>";
-
 
 
 var nodemailer = require('nodemailer');
@@ -11,7 +10,8 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        
+        user: 'oololo276@gmail.com',
+        pass: 'ppaasswwoorrdd'
     }
 });
 
@@ -34,5 +34,7 @@ img2attach(html).then(function (data) {
       console.log('Message sent: ' + info.response);
 
   });
+}).fail(function (err) {
+  console.log('epic fail', err);
 });
 

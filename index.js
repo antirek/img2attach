@@ -5,8 +5,6 @@ var Q = require('q');
 var Encoder = require('./lib/encoder');
 
 var img2attach = function (html) {
-	var defer = Q.defer();
-
 	var encoder = new Encoder();
 
 	var $ = cheerio.load(html);
@@ -26,22 +24,28 @@ var img2attach = function (html) {
 
 	var promises = objects.map(function (element) {
 		var src = element.src;
-		return encoder.encodeRemoteImg(src);
+		var rExternal = /^(http|\/\/)/;
+
+		console.log('src', src);
+	  if (!rExternal.test(src)) {
+      return encoder.encodeLocalImg(src);
+    } else {
+      return encoder.encodeRemoteImg(src);
+    }
 	});
 
-	Q.all(promises).then(function (datas) {
+	return Q.all(promises).then(function (datas) {
 		objects.map(function (element, index) {
 			element.content = datas[index].content;
 			element.contentType = datas[index].contentType;
-		});
-
-		defer.resolve({
+		});		
+	}).then(function () {
+		return Q.resolve({
 			html: $.html(),
 			attachments: objects
 		});
 	});
-
-	return defer.promise;
+	
 };
 
 module.exports = img2attach;

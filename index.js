@@ -17,7 +17,8 @@ var img2attach = function (html) {
 		var cid = uuid.v4();
 		objects.push({
 			cid: cid,
-			src: src
+			src: src,
+			encoding: 'base64'
 		});
 
 		$(element).attr('src', 'cid:' + cid);
@@ -30,10 +31,14 @@ var img2attach = function (html) {
 
 	Q.all(promises).then(function (datas) {
 		objects.map(function (element, index) {
-			element.data = datas[index];
+			element.content = datas[index].content;
+			element.contentType = datas[index].contentType;
 		});
 
-		defer.resolve(objects);
+		defer.resolve({
+			html: $.html(),
+			attachments: objects
+		});
 	});
 
 	return defer.promise;

@@ -1,40 +1,8 @@
-# img2attach
-
-Replace images urls from html email content to content-id resources links
-
-Send beautiful HTML emails without external images ;)
-
-## Install
-
-> npm install img2attach [--save]
-
-
-## Usage
-
-Simple
-
-`````javascript
-
-var img2attach = require('img2attach');
-
-img2attach(html).then(function (data) {
-  console.log('html', data.html);
-  console.log('attachments', data.attachments);
-  
-}).fail(function (err) {
-  console.log('error', err);
-});
-
-`````
-
-With [nodemailer](https://github.com/andris9/Nodemailer)
-
-`````javascript 
-
 var img2attach = require('./index');
 var nodemailer = require('nodemailer');
 
-var html = '<img src="http://cs624028.vk.me/v624028538/276f5/2ASEewrS9xk.jpg">';
+var html = "<img src='./1.png'>" + 
+"<img src='http://www.google.com/'>";
 
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
@@ -62,8 +30,3 @@ img2attach(html)
     .fail(function (err) {
         console.log('fail', err);
     });
-
-`````
-
-### RFC
-https://www.ietf.org/rfc/rfc2392.txt

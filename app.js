@@ -18,10 +18,9 @@ var transporter = nodemailer.createTransport({
 img2attach(html).then(function (data) {
   console.log('html', data.html);
 
-
   var mailOptions = {
       to: 'serge.dmitriev@gmail.com', // list of receivers
-      subject: 'Hello ✔', // Subject line
+      subject: 'Hello', // Subject line
       html: data.html,
       attachments: data.attachments
   };
@@ -35,6 +34,5 @@ img2attach(html).then(function (data) {
 
   });
 }).fail(function (err) {
-  console.log('epic fail', err);
+  console.log('fail', err);
 });
-
